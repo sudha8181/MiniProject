@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import Accordians from './Acoordian/Accordian';
+import Api from './Api';
+
 
 function App() {
+
+  const[data,setData]=useState(Api);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <div className="w-50 bg-primary mx-auto  my-5 pb-5">
+        <div className="py-3">
+            <h1 className="text-dark text-center ">React Interview Question</h1>
+        </div>
+          {data.map((value)=>{
+            
+            return <Accordians
+            key={value.id}
+            ques={value.question}
+            ans={value.answer}
+            />
+
+          })}
+
+  </div>
+   </>
   );
 }
 
